@@ -1,3 +1,2 @@
 # Preface {.unnumbered}
-
-These notes discuss causal inference. 
+These Quarto book collects notes on Causal Inference.  They are work in progress and incomplete. It is for personal use, but if you want to use them feel free of doing it.  If you find any mistake, send me an email to monika.avilamarquez@gmail.com

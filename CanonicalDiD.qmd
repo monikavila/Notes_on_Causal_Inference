@@ -11,7 +11,7 @@ two time periods. One group that is never treated, and the other group is treate
 The observed data for $i \in {1, ..., N}$ and $t \in {1,2}$ is $Y_{it}$ (the outcome variable for individual $i$ at period $t$), $D_{i}$ the treatment indicator for individual $i$ that takes value 1 if treated or 0 otherwise. We can define a time variable $A_t$ that takes value 0 if period t is equal to 1 and 1 if period t is equal to 2.  Thus, one can create the treatment indicator $W_{it}=D_i*A_t$. We can also have a set of covariates that are not affected by the treatment $X_{it}$, @callaway2021difference assumes the presence of pre-treatment covariates $X_i$.  Following, @callaway2021difference we assume the same.  
 
 ##### Potential outcomes 
-The potential outcomes are depend only on the treatment at the current period such that $Y_{it}(W_{it})$ denotes de potential outcome of individual i at period t if he remains untreated in both periods. Then: 
+In the static case, the potential outcomes depend only on the treatment at the current period such that $Y_{it}(W_{it})$ denotes de potential outcome of individual i at period t if he remains untreated in both periods. Then: 
 
 
 - $Y_{it}(0)$ denotes de potential outcome of individual i at period t if he is untreated. 
@@ -23,100 +23,8 @@ The design of the canonical DiD excludes potential outcome $Y_{i0}(1)$.
 
 ### Identification
 #### Identifying assumptions 
+In the static case, there is no need of an anticipation assumption, as the potential outcome $Y_{i1}(1)$ does not exist by virtue of the design of no one treated at period 0. 
 
-**Assumption 3.a** No treatment anticipation 
-
-$$\mathbb{E}[Y_{i1}(1)|D_i=1]=\mathbb{E}[Y_{i1}(0)|D_i=1]$$
-
-This assumption states that, on average, the potential outcome under no treatment is equal to the treated one for the treated group. This assumption rules out self-selection into treatment before the treatment is delivered. @callaway2021difference states that this assumption rules out anticipation of the treatment. This is feasible when units do not know the treatment path, or when units cannot choose treatment status. 
-
-This assumption can be relaxed to make it conditional. 
-
-**Assumption 3.b** Conditional no treatment anticipation 
-
-$$\mathbb{E}[Y_{i1}(1)|X_i, D_i=1]=\mathbb{E}[Y_{i1}(0)|X_i, D_i=1]$$
-
-
-**Assumption 4.a** Parallel trends
-
-$$\mathbb{E}[Y_{i2}(0)-Y_{i1}(0)|D_i=1]=\mathbb{E}[Y_{i2}(0)-Y_{i1}(0)|D_i=0]$$
-
-The evolution of the untreated potential outcomes is equal for both groups on average. This assumption can be relaxed to make it conditional. 
-
-**Assumption 4.b** Conditional Parallel trends
-
-$$\mathbb{E}[Y_{i2}(0)-Y_{i1}(0)|X_i, D_i=1]-\mathbb{E}[Y_{i2}(0)-Y_{i1}(0)|X_i, D_i=0]$$
-
-Conditioing in covariates is important when there are covariate specific trends in the outcomes. 
-
-#### Identification proof
-Under assumptions 1, 2, and 3.a, the following identification formula identifies $\tau_2$: 
-
-$$ DiD = \mathbb{E}[Y_{i2} -Y_{i1}|D_i=1 ]-\mathbb{E}[Y_{i2} -Y_{i1}|D_i=0 ]$$
-
-**Proof**
-
-Consider  $\mathbb{E}[Y_{i2} -Y_{i1}|D_i=1 ]$, and replace the definition of the observed outcome such that: 
-
-$$\begin{split}
-\mathbb{E}[Y_{i2} -Y_{i1}|D_i=1 ] = \mathbb{E}[Y_{i2}(0)+ (Y_{i2}(1)-Y_{i2}(0))D_i \\
- -(Y_{i1}(0)+ (Y_{i1}(1)-Y_{i1}(0))D_i ) |D_i=1] \end{split}$$
-
-Then, 
-
-$$\begin{split}
-\mathbb{E}[Y_{i2} -Y_{i1}|D_i=1 ] = \mathbb{E}[Y_{i2}(0)|D_i=1] - \mathbb{E}[Y_{i1}(0)|D_i=1]  \\+ \mathbb{E}[(Y_{i2}(1)-Y_{i2}(0))D_i|D_i=1] \\ -\mathbb{E}[((Y_{i1}(1)-Y_{i1}(0))D_i ) |D_i=1] 
-\end{split}$$
-
-
-
-Similarly, 
-
-$$\begin{split}
-\mathbb{E}[Y_{i2} -Y_{i1}|D_i=0 ] = \mathbb{E}[Y_{i2}(0)|D_i=0] - \mathbb{E}[Y_{i1}(0)|D_i=0]  \\+ \mathbb{E}[(Y_{i2}(1)-Y_{i2}(0))D_i|D_i=0] \\ -\mathbb{E}[((Y_{i1}(1)-Y_{i1}(0))D_i ) |D_i=0] \\  
-= \mathbb{E}[Y_{i2}(0)|D_i=0] - \mathbb{E}[Y_{i1}(0)|D_i=0] 
-\end{split}$$
-
-Then, 
-
-$$\begin{split} DiD = \tau_2 \\ 
-+  \mathbb{E}[Y_{i2}(0)|D_i=1] - \mathbb{E}[Y_{i1}(0)|D_i=1] \\
-- (\mathbb{E}[Y_{i2}(0)|D_i=0] - \mathbb{E}[Y_{i1}(0)|D_i=0] ) \\
--\mathbb{E}[(Y_{i1}(1)-Y_{i1}(0)) |D_i=1] \\
-= \tau_2 \\ 
-+  \mathbb{E}[Y_{i2}(0) - Y_{i1}(0)|D_i=1] \\
-- (\mathbb{E}[Y_{i2}(0) - Y_{i1}(0)|D_i=0] ) \\
--\mathbb{E}[(Y_{i1}(1)-Y_{i1}(0)) |D_i=1] 
-\end{split}$$
-
-Under Assumption 3.a and Assumption 4.a, DiD is equal to $\tau_2$.
-
-
-
-#### Assumptions 
-
-**Assumption 1**  Random sampling 
-
-$\{Y_i, D_i, X_i\}$ is independent and identically distributed, with $Y_i$, and $D_i$ collecting all the time observations per individual. It imposes that each indvidual is randomly drawn from a large population of interest but it does not restrict the dependency across time periods. 
-
- This assumption is done by @callaway2021difference, and it allows to see the potential outcomes as random.  
-
-The observed outcome variable can be re-written as: 
-**Assumption 2**  Consistency
-By consistency, we have that the potential outcome can be written as: 
-$$Y_{it} = Y_{it}(0) + (Y_{it}(1) - Y_{it}(0))W_{it}$$
-
-
-#### Estimand or causal target parameter
-
-The target parameter of interest is the average treatment effect on the treated at period 2: 
-
-$$\tau_2 = \mathbb{E}[Y_{i2}(1)-Y_{i2}(0)|D_i=1] $$
-
-
-### Identification
-#### Identifying assumptions 
-In the static case, there is no need of an anticipation assumption, as the potential outcome $Y_{i0}(1)$ does not exist by virtue of the design of no one treated at period 0. 
 
 **Assumption 3.a** Parallel trends
 
@@ -124,14 +32,14 @@ $$\mathbb{E}[Y_{i2}(0)-Y_{i1}(0)|D_i=1]=\mathbb{E}[Y_{i2}(0)-Y_{i1}(0)|D_i=0]$$
 
 The evolution of the untreated potential outcomes is equal for both groups on average. This assumption can be relaxed to make it conditional. 
 
-**Assumption 4.b** Conditional Parallel trends
+**Assumption 3.b** Conditional Parallel trends
 
 $$\mathbb{E}[Y_{i2}(0)-Y_{i1}(0)|X_i, D_i=1]-\mathbb{E}[Y_{i2}(0)-Y_{i1}(0)|X_i, D_i=0]$$
 
 Conditioing in covariates is important when there are covariate specific trends in the outcomes. 
 
 #### Identification proof
-Under assumptions 1, 2, and 3.a, the following identification formula identifies $\tau_2$: 
+Under assumptions 1, 2, and 3.a the following identification formula identifies $\tau_2$: 
 
 $$ DiD = \mathbb{E}[Y_{i2} -Y_{i1}|D_i=1 ]-\mathbb{E}[Y_{i2} -Y_{i1}|D_i=0 ]$$
 
@@ -140,37 +48,39 @@ $$ DiD = \mathbb{E}[Y_{i2} -Y_{i1}|D_i=1 ]-\mathbb{E}[Y_{i2} -Y_{i1}|D_i=0 ]$$
 Consider  $\mathbb{E}[Y_{i2} -Y_{i1}|D_i=1 ]$, and replace the definition of the observed outcome such that: 
 
 $$\begin{split}
-\mathbb{E}[Y_{i2} -Y_{i1}|D_i=1 ] = \mathbb{E}[Y_{i2}(0)+ (Y_{i2}(1)-Y_{i2}(0))D_i \\
- -(Y_{i1}(0)+ (Y_{i1}(1)-Y_{i1}(0))D_i ) |D_i=1] \end{split}$$
+\mathbb{E}[Y_{i2} -Y_{i1}|D_i=1 ] = \mathbb{E}[Y_{i2}(0)+ (Y_{i2}(1)-Y_{i2}(0))W_{i2} \\
+ -(Y_{i1}(0)+ (Y_{i1}(1)-Y_{i1}(0))W_{i1} ) |D_i=1] \end{split}$$
 
 Then, 
 
 $$\begin{split}
-\mathbb{E}[Y_{i2} -Y_{i1}|D_i=1 ] = \mathbb{E}[Y_{i2}(0)|D_i=1] - \mathbb{E}[Y_{i1}(0)|D_i=1]  \\+ \mathbb{E}[(Y_{i2}(1)-Y_{i2}(0))D_i|D_i=1] \\ -\mathbb{E}[((Y_{i1}(1)-Y_{i1}(0))D_i ) |D_i=1] 
-\end{split}$$
+\mathbb{E}[Y_{i2} -Y_{i1}|D_i=1 ] =  \mathbb{E}[Y_{i2}(0)+ (Y_{i2}(1)-Y_{i2}(0))] \\
+ -(Y_{i1}(0) ) |D_i=1] \end{split}$$
 
-
+$$\begin{split}
+\mathbb{E}[Y_{i2} -Y_{i1}|D_i=1 ] = \mathbb{E}[(Y_{i2}(1)-Y_{i2}(0)) |D_i=1] \\
+ + \mathbb{E}[Y_{i2}(0) -(Y_{i1}(0) ) |D_i=1] \end{split}$$
 
 Similarly, 
 
 $$\begin{split}
-\mathbb{E}[Y_{i2} -Y_{i1}|D_i=0 ] = \mathbb{E}[Y_{i2}(0)|D_i=0] - \mathbb{E}[Y_{i1}(0)|D_i=0]  \\+ \mathbb{E}[(Y_{i2}(1)-Y_{i2}(0))D_i|D_i=0] \\ -\mathbb{E}[((Y_{i1}(1)-Y_{i1}(0))D_i ) |D_i=0] \\  
-= \mathbb{E}[Y_{i2}(0)|D_i=0] - \mathbb{E}[Y_{i1}(0)|D_i=0] 
+\mathbb{E}[Y_{i2} -Y_{i1}|D_i=0 ] = \mathbb{E}[Y_{i2}(0)+ (Y_{i2}(1)-Y_{i2}(0))W_{i2} \\
+ -(Y_{i1}(0)+ (Y_{i1}(1)-Y_{i1}(0))W_{i1} ) |D_i=0]
+\end{split}$$
+
+$$\begin{split}
+\mathbb{E}[Y_{i2} -Y_{i1}|D_i=0 ] = \mathbb{E}[Y_{i2}(0) -(Y_{i1}(0) ) |D_i=0]
 \end{split}$$
 
 Then, 
 
 $$\begin{split} DiD = \tau_2 \\ 
-+  \mathbb{E}[Y_{i2}(0)|D_i=1] - \mathbb{E}[Y_{i1}(0)|D_i=1] \\
-- (\mathbb{E}[Y_{i2}(0)|D_i=0] - \mathbb{E}[Y_{i1}(0)|D_i=0] ) \\
--\mathbb{E}[(Y_{i1}(1)-Y_{i1}(0)) |D_i=1] \\
-= \tau_2 \\ 
 +  \mathbb{E}[Y_{i2}(0) - Y_{i1}(0)|D_i=1] \\
 - (\mathbb{E}[Y_{i2}(0) - Y_{i1}(0)|D_i=0] ) \\
--\mathbb{E}[(Y_{i1}(1)-Y_{i1}(0)) |D_i=1] 
 \end{split}$$
 
-Under Assumption 3.a and Assumption 4.a, DiD is equal to $\tau_2$.
+Under Assumption 3.a, DiD is equal to $\tau_2$.
+
 
 
 ### Dynamic case 
@@ -237,7 +147,7 @@ $$\mathbb{E}[Y_{i2}(0)-Y_{i1}(0)|X_i, D_i=1]-\mathbb{E}[Y_{i2}(0)-Y_{i1}(0)|X_i,
 Conditioing in covariates is important when there are covariate specific trends in the outcomes. 
 
 #### Identification proof
-Under assumptions 1, 2, and 3.a, the following identification formula identifies $\tau_2$: 
+Under assumptions 1, 2, and 3.a, 4.a the following identification formula identifies $\tau_2$: 
 
 $$ DiD = \mathbb{E}[Y_{i2} -Y_{i1}|D_i=1 ]-\mathbb{E}[Y_{i2} -Y_{i1}|D_i=0 ]$$
 
