@@ -1,0 +1,10 @@
+# Estimand, estimator and estimate
+
+## Estimand 
+An estimand is a quantity that has to be estimated.  It is the target.  For example, the average treatment effect $\mathbb{E} [Y(1) - Y(0)]$. 
+
+## Estimator 
+The method used to estimate the estimand. 
+
+## Estimate
+The value obtained using our data. 

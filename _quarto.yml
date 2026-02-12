@@ -1,0 +1,33 @@
+project:
+  type: book
+
+book:
+  title: "Causal Inference"
+  author: "Monika Avila Marquez"
+  date: "1/5/2026"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    
+    - 1_Estimand.qmd
+
+    - RDD.qmd
+
+    - part: DiD.qmd
+      chapters:
+      - CanonicalDiD.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+  pdf:
+    documentclass: scrreprt
+
+
+

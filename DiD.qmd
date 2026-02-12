@@ -1,0 +1,5 @@
+# Difference in Differences (DiD) 
+
+## Background
+
+Difference-in-differences (DiD) is a quasi-experimental design, it was first proposed in 1840s.

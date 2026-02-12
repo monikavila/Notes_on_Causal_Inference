@@ -1,0 +1,173 @@
+[
+  {
+    "objectID": "1_Estimand.html",
+    "href": "1_Estimand.html",
+    "title": "2  Estimand, estimator and estimate",
+    "section": "",
+    "text": "2.1 Estimand\nAn estimand is a quantity that has to be estimated. It is the target. For example, the average treatment effect \\(\\mathbb{E} [Y(1) - Y(0)]\\).",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Estimand, estimator and estimate</span>"
+    ]
+  },
+  {
+    "objectID": "1_Estimand.html#estimator",
+    "href": "1_Estimand.html#estimator",
+    "title": "2  Estimand, estimator and estimate",
+    "section": "2.2 Estimator",
+    "text": "2.2 Estimator\nThe method used to estimate the estimand.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Estimand, estimator and estimate</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "3  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "References"
+    ]
+  },
+  {
+    "objectID": "1_Estimand.html#estimate",
+    "href": "1_Estimand.html#estimate",
+    "title": "2  Estimand, estimator and estimate",
+    "section": "2.3 Estimate",
+    "text": "2.3 Estimate\nThe value obtained using our data.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Estimand, estimator and estimate</span>"
+    ]
+  },
+  {
+    "objectID": "RDD.html",
+    "href": "RDD.html",
+    "title": "3  Regression Discontinuity Design (RDD)",
+    "section": "",
+    "text": "3.1 Setup\nThe observed outcome variable is \\(Y_i\\), the treatment variable \\(D_i\\) is binary taking value 1 if treated and 0 otherwise. \\(Z_i\\) is a running variable that is not affected by the treatment. This variable is also called the forcing or treatment-determining variable (Imbens and Lemieux (2008)). The treatment assignment is determined completely or partly by being on either side of a treshold. The potential outcomes are \\(Y_i(1)\\), and \\(Y_i(0)\\). The observed outcome variable can be written as: \\[Y_i = Y_i(0) + (Y_i(1)-Y_i(0))D_i\\]",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Regression Discontinuity Design (RDD)</span>"
+    ]
+  },
+  {
+    "objectID": "RDD.html#assumptions",
+    "href": "RDD.html#assumptions",
+    "title": "3  Regression Discontinuity Design (RDD)",
+    "section": "3.2 Assumptions",
+    "text": "3.2 Assumptions\nAssumption 1. Consistency assumption\nThis assumption states that \\(Y_i = Y_i(D_i)\\).\nAssumption 2. Discontinuous conditional treatment probability on the running variable \\(Z_i\\) at the treshold \\(z_o\\)\n\\(\\lim_{z \\to z_o^+} \\mathbb{E}[D_i | z_i = z] \\neq \\lim_{x \\to x_o^-}  \\mathbb{E}[D_i | z_i=z]\\) and both limits exist\nHahn, Todd, and Van der Klaauw (2001) provides this assumption.\nThis assumptions states that the conditional expectation of the treatment is discontinous in the running variable at the treshold \\(z_o\\).\nThus, the probability of receiving treatment is discontinous at the treshold (Hahn, Todd, and Van der Klaauw (2001)).\nAssumption 3.a Continous conditional expectation of the potential outcome without treatment on the running variable \\(Z_i\\) at the treshold \\(z_o\\)\n\\(\\mathbb{E} [Y_i(0)|Z_i = z]\\) is continous in \\(z\\) at \\(z_o\\).\nHahn, Todd, and Van der Klaauw (2001) provides this assumption.\nThis assumptions states that the potential outcome without treatment can be related to the running variable, but it is continous at the treshold. As a result, any jump on the observed outcome at the treshold can be attributed to the treatment.\nUnder this assumption, persons close to the treshold are similar under the absence of treatment on average (Hahn, Todd, and Van der Klaauw (2001)).\nAssumption 3.b Continous conditional expectation of the potential outcomes on the running variable \\(Z_i\\) at all the support of \\(Z\\)\n\\(\\mathbb{E} [Y_i(0)|Z_i = z]\\) is continous in \\(z\\).\n\\(\\mathbb{E} [Y_i(1)|Z_i = z]\\) is continous in \\(z\\).\nImbens and Lemieux (2008) provides this stronger assumption. This assumption is stronger than assumption 3.a as it requires continuity over the whole support of the running variable. Imbens and Lemieux (2008) states that it is unlikely to have continuity only at one point, and this is why consider that this assumption is more natural. This assumption implies that a conditional idependence assumption holds trivially:\n\\[Y_i(0), Y_i(1) \\perp D_i | Z_i \\]\nThe reason is that conditioning on the running variable, the treatment is fully determined.\nAssumption 3.c Continous conditional distribution function of the potential outcomes on the running variable \\(Z_i\\) at all the support of \\(Z\\)\n\\(\\mathbb{F}_{Y(0)|Z}(y|z)\\) is continous in \\(z\\).\n\\(\\mathbb{F}_{Y(1)|Z}(y|z)\\) is continous in \\(z\\).\nImbens and Lemieux (2008) provides this stronger assumption than assumption 3.b.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Regression Discontinuity Design (RDD)</span>"
+    ]
+  },
+  {
+    "objectID": "RDD.html#setup",
+    "href": "RDD.html#setup",
+    "title": "3  Regression Discontinuity Design (RDD)",
+    "section": "",
+    "text": "Hahn, Jinyong, Petra Todd, and Wilbert Van der Klaauw. 2001. “Identification and Estimation of Treatment Effects with a Regression-Discontinuity Design.” Econometrica 69 (1): 201–9.\n\n\nImbens, Guido W, and Thomas Lemieux. 2008. “Regression Discontinuity Designs: A Guide to Practice.” Journal of Econometrics 142 (2): 615–35.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Regression Discontinuity Design (RDD)</span>"
+    ]
+  },
+  {
+    "objectID": "RDD.html#identification",
+    "href": "RDD.html#identification",
+    "title": "3  Regression Discontinuity Design (RDD)",
+    "section": "3.3 Identification",
+    "text": "3.3 Identification\n\n3.3.1 Constant treatment effects\nAssumption 4 Constant treatment effects \\[Y_i(1) - Y_i(0) = \\beta\\]\n\n3.3.1.1 Sharp design\nIn the sharp design, the treatment assignment is deterministic on \\(Z_i\\) such that \\(D_i = \\mathbb{1}_{Z_i\\geq z_o}\\). Then, \\(\\lim_{z \\to z_o^+} \\mathbb{E}[D_i | z_i = z]=1\\), and \\(\\lim_{z \\to z_o^-} \\mathbb{E}[D_i | z_i = z]=0\\). Under assumptions 1 - 3, the identification formula:\n\\[\\lim_{z \\to z_o^+} \\mathbb{E}[Y_i|Z_i =z ] - \\lim_{z \\to z_o^-} \\mathbb{E}[Y_i|Z_i=z]\\] identifes the average cuasal effect at the treshold: \\[\\mathbb{E}[Y_i(1)-Y_i(0)|Z_i =z_o].\\]\nProof (Hahn, Todd, and Van der Klaauw (2001))\nBy Assumption 1 \\(\\lim_{z \\to z_o^-} \\mathbb{E}[Y_i|Z_i=z] = \\lim_{z \\to z_o^-} \\mathbb{E}[ Y_i(0)|Z_i=z] + \\lim_{z \\to z_o^-} \\mathbb{E}[(Y_i(1)-Y_i(0))D_i|Z_i=z]\\)\nand\n\\(\\lim_{z \\to z_o^+} \\mathbb{E}[Y_i|Z_i=z] = \\lim_{z \\to z_o^+} \\mathbb{E}[ Y_i(0)|Z_i=z] + \\lim_{z \\to z_o^+} \\mathbb{E}[(Y_i(1)-Y_i(0))D_i|Z_i=z]\\)\nThen,\n\\(\\lim_{z \\to z_o^+} \\mathbb{E}[Y_i|Z_i=z] - \\lim_{z \\to z_o^-} \\mathbb{E}[Y_i|Z_i=z]\\) equals\n\\[\\begin{split}\\lim_{z \\to z_o^+} \\mathbb{E}[(Y_i(1)-Y_i(0))D_i|Z_i=z] - \\lim_{z \\to z_o^+} \\mathbb{E}[(Y_i(1)-Y_i(0))D_i|Z_i=z] \\\\ + \\lim_{z \\to z_o^+} \\mathbb{E}[ Y_i(0)|Z_i=z] - \\lim_{z \\to z_o^+} \\mathbb{E}[ Y_i(0)|Z_i=z]\\end{split}\\]\nBy assumption 3.a, terms 3 and 4 vanishes. By assumption 4,\n\\[\\begin{split}\\lim_{z \\to z_o^+} \\mathbb{E}[(Y_i(1)-Y_i(0))D_i|Z_i=z] - \\lim_{z \\to z_o^+} \\mathbb{E}[(Y_i(1)-Y_i(0))D_i|Z_i=z] = \\\\  \\lim_{z \\to z_o^+} \\mathbb{E}[\\beta D_i|Z_i=z] - \\lim_{z \\to z_o^+} \\mathbb{E}[\\beta D_i|Z_i=z] = \\\\ \\beta ([\\lim_{z \\to z_o^+} \\mathbb{E}[ D_i|Z_i=z] - \\lim_{z \\to z_o^+} \\mathbb{E}[ D_i|Z_i=z])  \\end{split}\\]\nIn the sharp design, \\([\\lim_{z \\to z_o^+} \\mathbb{E}[ D_i|Z_i=z] - \\lim_{z \\to z_o^+} \\mathbb{E}[ D_i|Z_i=z] =1\\).\nThus, the identification formula identifies the average causal effect \\(\\beta\\).\nProof (Imbens and Lemieux (2008))\nBy the sharp design, \\(\\lim_{z \\to z_o^-} \\mathbb{E}[Y_i|Z_i=z] = \\lim_{z \\to z_o^-} \\mathbb{E}[Y_i(0)|D_i=0, Z_i=z]\\)\nNow, by conditional independence we have that:\n\\(\\lim_{z \\to z_o^-} \\mathbb{E}[Y_i(0)|D_i=0, Z_i=z] = \\lim_{z \\to z_o^-} \\mathbb{E}[Y_i(0)| Z_i=z]\\)\nSimilar for the right-hand side limit.\n\n3.3.1.1.1 Why conditional unconfoundedness is not enough for identification of the average treatment effect?\nImbens and Lemieux (2008) explains that conditional unconfoundedness requires two assumptions:\n\nConditional independence: \\(Y_i(0), Y_i(1) \\perp D_i | Z_i\\)\nOverlap: \\(0&lt;P(Y_i(1)|Z_i)&lt;1\\)\n\nThe problem is that while conditional independence holds by assumption 3.b. The overlap assumption does not hold, the reason is that conditional on \\(Z_i\\) probability of treatment is either 0 or 1.\n\n\n\n\nHahn, Jinyong, Petra Todd, and Wilbert Van der Klaauw. 2001. “Identification and Estimation of Treatment Effects with a Regression-Discontinuity Design.” Econometrica 69 (1): 201–9.\n\n\nImbens, Guido W, and Thomas Lemieux. 2008. “Regression Discontinuity Designs: A Guide to Practice.” Journal of Econometrics 142 (2): 615–35.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Regression Discontinuity Design (RDD)</span>"
+    ]
+  },
+  {
+    "objectID": "DiD.html",
+    "href": "DiD.html",
+    "title": "Difference in Differences (DiD)",
+    "section": "",
+    "text": "Background\nDifference-in-differences (DiD) is a quasi-experimental design, it was first proposed in 1840s.",
+    "crumbs": [
+      "Difference in Differences (DiD)"
+    ]
+  },
+  {
+    "objectID": "DiD.html#canonical-did",
+    "href": "DiD.html#canonical-did",
+    "title": "4  Difference in Differences (DiD)",
+    "section": "4.2 Canonical DiD",
+    "text": "4.2 Canonical DiD\nThe basic DiD setup is one in which we have two groups and two time periods. One group that is never treated, and the other group is treated in the second period.\n\n4.2.1 Relationship with ANOVA\nThe DiD setup, can be seen as a two-factorial ANOVA design with two factors:\n\nTime period factor with two levels: period 1 and 2.\nTreatment factor with two levels: treated and untreated.\n\nAs a result it is a 2x2 ANOVA.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Difference in Differences (DiD)</span>"
+    ]
+  },
+  {
+    "objectID": "DiD.html#canonical-did-2x2-did-design",
+    "href": "DiD.html#canonical-did-2x2-did-design",
+    "title": "4  Difference in Differences (DiD)",
+    "section": "4.2 Canonical DiD (2x2 DiD Design)",
+    "text": "4.2 Canonical DiD (2x2 DiD Design)\nThe basic DiD setup is one in which we have two groups and two time periods. One group that is never treated, and the other group is treated in the second period.\n\n4.2.1 Setup\nThe observed data for \\(i \\in {1, ..., N}\\) and \\(t \\in {1,2}\\) is \\(Y_{it}\\) (the outcome variable for individual \\(i\\) at period \\(t\\)), \\(D_{i}\\) the treatment indicator for individual \\(i\\) that takes value 1 if treated or 0 otherwise. We can define a time variable \\(A_t\\) that takes value 0 if period t is equal to 1 and 1 if period t is equal to 2. Thus, one can create the treatment indicator \\(W_{it}=D_i*A_t\\). We can also have a set of covariates that are not affected by the treatment \\(X_{it}\\), Callaway and Sant’Anna (2021) assumes the presence of pre-treatment covariates \\(X_i\\). Following, Callaway and Sant’Anna (2021) we assume the same.\n\n4.2.1.1 Potential outcomes\nThe potential outcomes are:\n\n\\(Y_{it}(0,0)\\) denotes de potential outcome of individual i at period t if he remains untreated in both periods.\n\\(Y_{it}(0,1)\\) denotes de potential outcome of individual i at period t if he is untreated in period 1 and treated at period 2.\n\\(Y_{it}(1,0)\\) denotes de potential outcome of individual i at period t if he is treated in period 2 and untreated at period 1.\n\\(Y_{it}(1,1)\\) denotes de potential outcome of individual i at period t if he is treated in both periods.\n\nThe design of the canonical DiD excludes potential outcomes \\(Y_{it}(1,0)\\) and \\(Y_{it}(1,1)\\) as there is no treatment in period 0. Since we only have two potential outcomes, for simplicity, we call \\(Y_{it}(0,0)=Y_{it}(0)\\) and \\(Y_{it}(0,1)=Y_{it}(1)\\).\nThe observed outcome variable can be re-written as:\n\\[Y_{it} = Y_{it}(0) + (Y_{it}(1) - Y_{it}(0))W_{it}\\]\n\n\n4.2.1.2 Assumptions\nAssumption 1 Random sampling\n\\(\\{Y_i, D_i, X_i\\}\\) is independent and identically distributed, with \\(Y_i\\), and \\(D_i\\) collecting all the time observations per individual. It imposes that each indvidual is randomly drawn from a large population of interest but it does not restrict the dependency across time periods.\nThis assumption is done by Callaway and Sant’Anna (2021), and it allows to see the potential outcomes as random.\n\n\n\n4.2.2 Estimand or causal target parameter\nThe target parameter of interest is the average treatment effect on the treated at period 2:\n\\[\\tau_2 = \\mathbb{E}[Y_{i2}(1)-Y_{i2}(0)|D_i=1] \\]\n\n\n4.2.3 Identification\n\n4.2.3.1 Identifying assumptions\nAssumption 3.a No treatment anticipation\n\\[\\mathbb{E}[Y_{i1}(1)|D_i=1]=\\mathbb{E}[Y_{i1}(0)|D_i=1]\\]\nThis assumption states that, on average, the potential outcome under no treatment is equal to the treated one for the treated group. This assumption rules out self-selection into treatment before the treatment is delivered. Callaway and Sant’Anna (2021) states that this assumption rules out anticipation of the treatment. This is feasible when units do not know the treatment path, or when units cannot choose treatment status.\nThis assumption can be relaxed to make it conditional.\nAssumption 3.b Conditional no treatment anticipation\n\\[\\mathbb{E}[Y_{i1}(1)|X_i, D_i=1]=\\mathbb{E}[Y_{i1}(0)|X_i, D_i=1]\\]\nAssumption 4.a Parallel trends\n\\[\\mathbb{E}[Y_{i2}(0)-Y_{i1}(0)|D_i=1]=\\mathbb{E}[Y_{i2}(0)-Y_{i1}(0)|D_i=0]\\]\nThe evolution of the untreated potential outcomes is equal for both groups on average. This assumption can be relaxed to make it conditional.\nAssumption 4.b Conditional Parallel trends\n\\[\\mathbb{E}[Y_{i2}(0)-Y_{i1}(0)|X_i, D_i=1]-\\mathbb{E}[Y_{i2}(0)-Y_{i1}(0)|X_i, D_i=0]\\]\nConditioing in covariates is important when there are covariate specific trends in the outcomes.\n\n\n4.2.3.2 Identification proof\nUnder assumptions 1, 2, and 3.a, the following identification formula identifies \\(\\tau_2\\):\n\\[ DiD = \\mathbb{E}[Y_{i2} -Y_{i1}|D_i=1 ]-\\mathbb{E}[Y_{i2} -Y_{i1}|D_i=0 ]\\]\nProof\nConsider \\(\\mathbb{E}[Y_{i2} -Y_{i1}|D_i=1 ]\\), and replace the definition of the observed outcome such that:\n\\[\\begin{split}\n\\mathbb{E}[Y_{i2} -Y_{i1}|D_i=1 ] = \\mathbb{E}[Y_{i2}(0)+ (Y_{i2}(1)-Y_{i2}(0))D_i \\\\\n-(Y_{i1}(0)+ (Y_{i1}(1)-Y_{i1}(0))D_i ) |D_i=1] \\end{split}\\]\nThen,\n\\[\\begin{split}\n\\mathbb{E}[Y_{i2} -Y_{i1}|D_i=1 ] = \\mathbb{E}[Y_{i2}(0)|D_i=1] - \\mathbb{E}[Y_{i1}(0)|D_i=1]  \\\\+ \\mathbb{E}[(Y_{i2}(1)-Y_{i2}(0))D_i|D_i=1] \\\\ -\\mathbb{E}[((Y_{i1}(1)-Y_{i1}(0))D_i ) |D_i=1]\n\\end{split}\\]\n\nSimilarly,\n\\[\\begin{split}\n\\mathbb{E}[Y_{i2} -Y_{i1}|D_i=0 ] = \\mathbb{E}[Y_{i2}(0)|D_i=0] - \\mathbb{E}[Y_{i1}(0)|D_i=0]  \\\\+ \\mathbb{E}[(Y_{i2}(1)-Y_{i2}(0))D_i|D_i=0] \\\\ -\\mathbb{E}[((Y_{i1}(1)-Y_{i1}(0))D_i ) |D_i=0] \\\\  \n= \\mathbb{E}[Y_{i2}(0)|D_i=0] - \\mathbb{E}[Y_{i1}(0)|D_i=0]\n\\end{split}\\]\nThen,\n\\[\\begin{split} DiD = \\tau_2 \\\\\n+  \\mathbb{E}[Y_{i2}(0)|D_i=1] - \\mathbb{E}[Y_{i1}(0)|D_i=1] \\\\\n- (\\mathbb{E}[Y_{i2}(0)|D_i=0] - \\mathbb{E}[Y_{i1}(0)|D_i=0] ) \\\\\n-\\mathbb{E}[(Y_{i1}(1)-Y_{i1}(0)) |D_i=1] \\\\\n= \\tau_2 \\\\\n+  \\mathbb{E}[Y_{i2}(0) - Y_{i1}(0)|D_i=1] \\\\\n- (\\mathbb{E}[Y_{i2}(0) - Y_{i1}(0)|D_i=0] ) \\\\\n-\\mathbb{E}[(Y_{i1}(1)-Y_{i1}(0)) |D_i=1]\n\\end{split}\\]\nUnder Assumption 3.a and Assumption 4.a, DiD is equal to \\(\\tau_2\\).\n\n\n\n4.2.4 Estimation\nThe estimator is given by: \\[\\hat{DiD} = (\\bar{Y}_{1,2}-\\bar{Y}_{1,1}) - (\\bar{Y}_{0,2}-\\bar{Y}_{0,1})\\]\nwhere \\(\\bar{Y}_{j,s} = \\frac{1}{\\sum \\mathbb{1}_{D_i =j, t=s}} \\mathbb{1}_{D_i =j, t=s} Y_{it}\\) with \\(j \\in {0,1}\\) and \\(s \\in {1,2}\\).\n\n\n4.2.5 Relationship with ANOVA\nThe 2x2 DiD Design, can be seen as a two-factorial ANOVA design with two factors:\n\nTime period factor with two levels: period 0 and 1.\nTreatment factor with two levels: treated and untreated.\n\nAs a result it is a 2x2 ANOVA.\n\n\n\n\nCallaway, Brantly, and Pedro HC Sant’Anna. 2021. “Difference-in-Differences with Multiple Time Periods.” Journal of Econometrics 225 (2): 200–230.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Difference in Differences (DiD)</span>"
+    ]
+  },
+  {
+    "objectID": "DiD.html#estimand-or-causal-targe-parameter",
+    "href": "DiD.html#estimand-or-causal-targe-parameter",
+    "title": "4  Difference in Differences (DiD)",
+    "section": "4.3 Estimand or causal targe parameter",
+    "text": "4.3 Estimand or causal targe parameter\nThe target parameter of interest is the average treatment effect on the treated at period 2:\n\\[\\tau_2 = \\mathbb{E}[Y_{it}(1)-Y_{it}(0)|D_i=1] \\]",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Difference in Differences (DiD)</span>"
+    ]
+  },
+  {
+    "objectID": "DiD.html#relationship-with-anova",
+    "href": "DiD.html#relationship-with-anova",
+    "title": "4  Difference in Differences (DiD)",
+    "section": "4.4 Relationship with ANOVA",
+    "text": "4.4 Relationship with ANOVA\nThe 2x2 DiD Design, can be seen as a two-factorial ANOVA design with two factors:\n\nTime period factor with two levels: period 0 and 1.\nTreatment factor with two levels: treated and untreated.\n\nAs a result it is a 2x2 ANOVA.\n\n\n\n\nCallaway, Brantly, and Pedro HC Sant’Anna. 2021. “Difference-in-Differences with Multiple Time Periods.” Journal of Econometrics 225 (2): 200–230.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Difference in Differences (DiD)</span>"
+    ]
+  },
+  {
+    "objectID": "DiD.html#estimand-or-causal-target-parameter",
+    "href": "DiD.html#estimand-or-causal-target-parameter",
+    "title": "4  Difference in Differences (DiD)",
+    "section": "4.3 Estimand or causal target parameter",
+    "text": "4.3 Estimand or causal target parameter\nThe target parameter of interest is the average treatment effect on the treated at period 2:\n\\[\\tau_2 = \\mathbb{E}[Y_{it}(1)-Y_{it}(0)|D_i=1] \\]",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Difference in Differences (DiD)</span>"
+    ]
+  },
+  {
+    "objectID": "CanonicalDiD.html",
+    "href": "CanonicalDiD.html",
+    "title": "4  Canonical DiD (2x2 DiD Design)",
+    "section": "",
+    "text": "The basic DiD setup is one in which we have two groups and two time periods. One group that is never treated, and the other group is treated in the second period.\n\n4.0.1 Static case\n\n4.0.1.1 Setup\nThe observed data for \\(i \\in {1, ..., N}\\) and \\(t \\in {1,2}\\) is \\(Y_{it}\\) (the outcome variable for individual \\(i\\) at period \\(t\\)), \\(D_{i}\\) the treatment indicator for individual \\(i\\) that takes value 1 if treated or 0 otherwise. We can define a time variable \\(A_t\\) that takes value 0 if period t is equal to 1 and 1 if period t is equal to 2. Thus, one can create the treatment indicator \\(W_{it}=D_i*A_t\\). We can also have a set of covariates that are not affected by the treatment \\(X_{it}\\), Callaway and Sant’Anna (2021) assumes the presence of pre-treatment covariates \\(X_i\\). Following, Callaway and Sant’Anna (2021) we assume the same.\n\n4.0.1.1.1 Potential outcomes\nThe potential outcomes are depend only on the treatment at the current period such that \\(Y_{it}(W_{it})\\) denotes de potential outcome of individual i at period t if he remains untreated in both periods. Then:\n\n\\(Y_{it}(0)\\) denotes de potential outcome of individual i at period t if he is untreated.\n\\(Y_{it}(1)\\) denotes de potential outcome of individual i at period t if he is treated.\n\nThe design of the canonical DiD excludes potential outcome \\(Y_{i0}(1)\\).\n\n\n\n\n4.0.2 Identification\n\n4.0.2.1 Identifying assumptions\nAssumption 3.a No treatment anticipation\n\\[\\mathbb{E}[Y_{i1}(1)|D_i=1]=\\mathbb{E}[Y_{i1}(0)|D_i=1]\\]\nThis assumption states that, on average, the potential outcome under no treatment is equal to the treated one for the treated group. This assumption rules out self-selection into treatment before the treatment is delivered. Callaway and Sant’Anna (2021) states that this assumption rules out anticipation of the treatment. This is feasible when units do not know the treatment path, or when units cannot choose treatment status.\nThis assumption can be relaxed to make it conditional.\nAssumption 3.b Conditional no treatment anticipation\n\\[\\mathbb{E}[Y_{i1}(1)|X_i, D_i=1]=\\mathbb{E}[Y_{i1}(0)|X_i, D_i=1]\\]\nAssumption 4.a Parallel trends\n\\[\\mathbb{E}[Y_{i2}(0)-Y_{i1}(0)|D_i=1]=\\mathbb{E}[Y_{i2}(0)-Y_{i1}(0)|D_i=0]\\]\nThe evolution of the untreated potential outcomes is equal for both groups on average. This assumption can be relaxed to make it conditional.\nAssumption 4.b Conditional Parallel trends\n\\[\\mathbb{E}[Y_{i2}(0)-Y_{i1}(0)|X_i, D_i=1]-\\mathbb{E}[Y_{i2}(0)-Y_{i1}(0)|X_i, D_i=0]\\]\nConditioing in covariates is important when there are covariate specific trends in the outcomes.\n\n\n4.0.2.2 Identification proof\nUnder assumptions 1, 2, and 3.a, the following identification formula identifies \\(\\tau_2\\):\n\\[ DiD = \\mathbb{E}[Y_{i2} -Y_{i1}|D_i=1 ]-\\mathbb{E}[Y_{i2} -Y_{i1}|D_i=0 ]\\]\nProof\nConsider \\(\\mathbb{E}[Y_{i2} -Y_{i1}|D_i=1 ]\\), and replace the definition of the observed outcome such that:\n\\[\\begin{split}\n\\mathbb{E}[Y_{i2} -Y_{i1}|D_i=1 ] = \\mathbb{E}[Y_{i2}(0)+ (Y_{i2}(1)-Y_{i2}(0))D_i \\\\\n-(Y_{i1}(0)+ (Y_{i1}(1)-Y_{i1}(0))D_i ) |D_i=1] \\end{split}\\]\nThen,\n\\[\\begin{split}\n\\mathbb{E}[Y_{i2} -Y_{i1}|D_i=1 ] = \\mathbb{E}[Y_{i2}(0)|D_i=1] - \\mathbb{E}[Y_{i1}(0)|D_i=1]  \\\\+ \\mathbb{E}[(Y_{i2}(1)-Y_{i2}(0))D_i|D_i=1] \\\\ -\\mathbb{E}[((Y_{i1}(1)-Y_{i1}(0))D_i ) |D_i=1]\n\\end{split}\\]\nSimilarly,\n\\[\\begin{split}\n\\mathbb{E}[Y_{i2} -Y_{i1}|D_i=0 ] = \\mathbb{E}[Y_{i2}(0)|D_i=0] - \\mathbb{E}[Y_{i1}(0)|D_i=0]  \\\\+ \\mathbb{E}[(Y_{i2}(1)-Y_{i2}(0))D_i|D_i=0] \\\\ -\\mathbb{E}[((Y_{i1}(1)-Y_{i1}(0))D_i ) |D_i=0] \\\\  \n= \\mathbb{E}[Y_{i2}(0)|D_i=0] - \\mathbb{E}[Y_{i1}(0)|D_i=0]\n\\end{split}\\]\nThen,\n\\[\\begin{split} DiD = \\tau_2 \\\\\n+  \\mathbb{E}[Y_{i2}(0)|D_i=1] - \\mathbb{E}[Y_{i1}(0)|D_i=1] \\\\\n- (\\mathbb{E}[Y_{i2}(0)|D_i=0] - \\mathbb{E}[Y_{i1}(0)|D_i=0] ) \\\\\n-\\mathbb{E}[(Y_{i1}(1)-Y_{i1}(0)) |D_i=1] \\\\\n= \\tau_2 \\\\\n+  \\mathbb{E}[Y_{i2}(0) - Y_{i1}(0)|D_i=1] \\\\\n- (\\mathbb{E}[Y_{i2}(0) - Y_{i1}(0)|D_i=0] ) \\\\\n-\\mathbb{E}[(Y_{i1}(1)-Y_{i1}(0)) |D_i=1]\n\\end{split}\\]\nUnder Assumption 3.a and Assumption 4.a, DiD is equal to \\(\\tau_2\\).\n\n\n4.0.2.3 Assumptions\nAssumption 1 Random sampling\n\\(\\{Y_i, D_i, X_i\\}\\) is independent and identically distributed, with \\(Y_i\\), and \\(D_i\\) collecting all the time observations per individual. It imposes that each indvidual is randomly drawn from a large population of interest but it does not restrict the dependency across time periods.\nThis assumption is done by Callaway and Sant’Anna (2021), and it allows to see the potential outcomes as random.\nThe observed outcome variable can be re-written as: Assumption 2 Consistency By consistency, we have that the potential outcome can be written as: \\[Y_{it} = Y_{it}(0) + (Y_{it}(1) - Y_{it}(0))W_{it}\\]\n\n\n4.0.2.4 Estimand or causal target parameter\nThe target parameter of interest is the average treatment effect on the treated at period 2:\n\\[\\tau_2 = \\mathbb{E}[Y_{i2}(1)-Y_{i2}(0)|D_i=1] \\]\n\n\n\n4.0.3 Identification\n\n4.0.3.1 Identifying assumptions\nIn the static case, there is no need of an anticipation assumption, as the potential outcome \\(Y_{i0}(1)\\) does not exist by virtue of the design of no one treated at period 0.\nAssumption 3.a Parallel trends\n\\[\\mathbb{E}[Y_{i2}(0)-Y_{i1}(0)|D_i=1]=\\mathbb{E}[Y_{i2}(0)-Y_{i1}(0)|D_i=0]\\]\nThe evolution of the untreated potential outcomes is equal for both groups on average. This assumption can be relaxed to make it conditional.\nAssumption 4.b Conditional Parallel trends\n\\[\\mathbb{E}[Y_{i2}(0)-Y_{i1}(0)|X_i, D_i=1]-\\mathbb{E}[Y_{i2}(0)-Y_{i1}(0)|X_i, D_i=0]\\]\nConditioing in covariates is important when there are covariate specific trends in the outcomes.\n\n\n4.0.3.2 Identification proof\nUnder assumptions 1, 2, and 3.a, the following identification formula identifies \\(\\tau_2\\):\n\\[ DiD = \\mathbb{E}[Y_{i2} -Y_{i1}|D_i=1 ]-\\mathbb{E}[Y_{i2} -Y_{i1}|D_i=0 ]\\]\nProof\nConsider \\(\\mathbb{E}[Y_{i2} -Y_{i1}|D_i=1 ]\\), and replace the definition of the observed outcome such that:\n\\[\\begin{split}\n\\mathbb{E}[Y_{i2} -Y_{i1}|D_i=1 ] = \\mathbb{E}[Y_{i2}(0)+ (Y_{i2}(1)-Y_{i2}(0))D_i \\\\\n-(Y_{i1}(0)+ (Y_{i1}(1)-Y_{i1}(0))D_i ) |D_i=1] \\end{split}\\]\nThen,\n\\[\\begin{split}\n\\mathbb{E}[Y_{i2} -Y_{i1}|D_i=1 ] = \\mathbb{E}[Y_{i2}(0)|D_i=1] - \\mathbb{E}[Y_{i1}(0)|D_i=1]  \\\\+ \\mathbb{E}[(Y_{i2}(1)-Y_{i2}(0))D_i|D_i=1] \\\\ -\\mathbb{E}[((Y_{i1}(1)-Y_{i1}(0))D_i ) |D_i=1]\n\\end{split}\\]\nSimilarly,\n\\[\\begin{split}\n\\mathbb{E}[Y_{i2} -Y_{i1}|D_i=0 ] = \\mathbb{E}[Y_{i2}(0)|D_i=0] - \\mathbb{E}[Y_{i1}(0)|D_i=0]  \\\\+ \\mathbb{E}[(Y_{i2}(1)-Y_{i2}(0))D_i|D_i=0] \\\\ -\\mathbb{E}[((Y_{i1}(1)-Y_{i1}(0))D_i ) |D_i=0] \\\\  \n= \\mathbb{E}[Y_{i2}(0)|D_i=0] - \\mathbb{E}[Y_{i1}(0)|D_i=0]\n\\end{split}\\]\nThen,\n\\[\\begin{split} DiD = \\tau_2 \\\\\n+  \\mathbb{E}[Y_{i2}(0)|D_i=1] - \\mathbb{E}[Y_{i1}(0)|D_i=1] \\\\\n- (\\mathbb{E}[Y_{i2}(0)|D_i=0] - \\mathbb{E}[Y_{i1}(0)|D_i=0] ) \\\\\n-\\mathbb{E}[(Y_{i1}(1)-Y_{i1}(0)) |D_i=1] \\\\\n= \\tau_2 \\\\\n+  \\mathbb{E}[Y_{i2}(0) - Y_{i1}(0)|D_i=1] \\\\\n- (\\mathbb{E}[Y_{i2}(0) - Y_{i1}(0)|D_i=0] ) \\\\\n-\\mathbb{E}[(Y_{i1}(1)-Y_{i1}(0)) |D_i=1]\n\\end{split}\\]\nUnder Assumption 3.a and Assumption 4.a, DiD is equal to \\(\\tau_2\\).\n\n\n\n4.0.4 Dynamic case\n\n4.0.4.1 Setup\nThe observed data for \\(i \\in {1, ..., N}\\) and \\(t \\in {1,2}\\) is \\(Y_{it}\\) (the outcome variable for individual \\(i\\) at period \\(t\\)), \\(D_{i}\\) the treatment indicator for individual \\(i\\) that takes value 1 if treated or 0 otherwise. We can define a time variable \\(A_t\\) that takes value 0 if period t is equal to 1 and 1 if period t is equal to 2. Thus, one can create the treatment indicator \\(W_{it}=D_i*A_t\\). We can also have a set of covariates that are not affected by the treatment \\(X_{it}\\), Callaway and Sant’Anna (2021) assumes the presence of pre-treatment covariates \\(X_i\\). Following, Callaway and Sant’Anna (2021) we assume the same.\n\n4.0.4.1.1 Potential outcomes\nIn the dynamic case, the potential outcomes depend on the whole history of the treatment:\n\n\\(Y_{it}(0,0)\\) denotes de potential outcome of individual i at period t if he remains untreated in both periods.\n\\(Y_{it}(0,1)\\) denotes de potential outcome of individual i at period t if he is untreated in period 1 and treated at period 2.\n\\(Y_{it}(1,0)\\) denotes de potential outcome of individual i at period t if he is treated in period 2 and untreated at period 1.\n\\(Y_{it}(1,1)\\) denotes de potential outcome of individual i at period t if he is treated in both periods.\n\nThe design of the canonical DiD excludes potential outcomes \\(Y_{it}(1,0)\\) and \\(Y_{it}(1,1)\\) as there is no treatment in period 0. Since we only have two potential outcomes, for simplicity, we call \\(Y_{it}(0,0)=Y_{it}(0)\\) and \\(Y_{it}(0,1)=Y_{it}(1)\\).\n\n\n\n4.0.4.2 Assumptions\nAssumption 1 Random sampling\n\\(\\{Y_i, D_i, X_i\\}\\) is independent and identically distributed, with \\(Y_i\\), and \\(D_i\\) collecting all the time observations per individual. It imposes that each indvidual is randomly drawn from a large population of interest but it does not restrict the dependency across time periods.\nThis assumption is done by Callaway and Sant’Anna (2021), and it allows to see the potential outcomes as random.\nAssumption 2 Consistency By consistency, we have that the potential outcome can be written as: \\[Y_{it} = Y_{it}(0) + (Y_{it}(1) - Y_{it}(0))D_{i}\\]\n\n\n4.0.4.3 Estimand or causal target parameter\nThe target parameter of interest is the average treatment effect on the treated at period 2:\n\\[\\tau_2 = \\mathbb{E}[Y_{i2}(1)-Y_{i2}(0)|D_i=1] \\]\n\n\n\n4.0.5 Identification\n\n4.0.5.1 Identifying assumptions\nAssumption 3.a No treatment anticipation\n\\[\\mathbb{E}[Y_{i1}(1)|D_i=1]=\\mathbb{E}[Y_{i1}(0)|D_i=1]\\]\nThis assumption states that, on average, the potential outcome under no treatment is equal to the treated one for the treated group. This assumption rules out self-selection into treatment before the treatment is delivered. Callaway and Sant’Anna (2021) states that this assumption rules out anticipation of the treatment. This is feasible when units do not know the treatment path, or when units cannot choose treatment status.\nThis assumption can be relaxed to make it conditional.\nAssumption 3.b Conditional no treatment anticipation\n\\[\\mathbb{E}[Y_{i1}(1)|X_i, D_i=1]=\\mathbb{E}[Y_{i1}(0)|X_i, D_i=1]\\]\nAssumption 4.a Parallel trends\n\\[\\mathbb{E}[Y_{i2}(0)-Y_{i1}(0)|D_i=1]=\\mathbb{E}[Y_{i2}(0)-Y_{i1}(0)|D_i=0]\\]\nThe evolution of the untreated potential outcomes is equal for both groups on average. This assumption can be relaxed to make it conditional.\nAssumption 4.b Conditional Parallel trends\n\\[\\mathbb{E}[Y_{i2}(0)-Y_{i1}(0)|X_i, D_i=1]-\\mathbb{E}[Y_{i2}(0)-Y_{i1}(0)|X_i, D_i=0]\\]\nConditioing in covariates is important when there are covariate specific trends in the outcomes.\n\n\n4.0.5.2 Identification proof\nUnder assumptions 1, 2, and 3.a, the following identification formula identifies \\(\\tau_2\\):\n\\[ DiD = \\mathbb{E}[Y_{i2} -Y_{i1}|D_i=1 ]-\\mathbb{E}[Y_{i2} -Y_{i1}|D_i=0 ]\\]\nProof\nConsider \\(\\mathbb{E}[Y_{i2} -Y_{i1}|D_i=1 ]\\), and replace the definition of the observed outcome such that:\n\\[\\begin{split}\n\\mathbb{E}[Y_{i2} -Y_{i1}|D_i=1 ] = \\mathbb{E}[Y_{i2}(0)+ (Y_{i2}(1)-Y_{i2}(0))D_i \\\\\n-(Y_{i1}(0)+ (Y_{i1}(1)-Y_{i1}(0))D_i ) |D_i=1] \\end{split}\\]\nThen,\n\\[\\begin{split}\n\\mathbb{E}[Y_{i2} -Y_{i1}|D_i=1 ] = \\mathbb{E}[Y_{i2}(0)|D_i=1] - \\mathbb{E}[Y_{i1}(0)|D_i=1]  \\\\+ \\mathbb{E}[(Y_{i2}(1)-Y_{i2}(0))D_i|D_i=1] \\\\ -\\mathbb{E}[((Y_{i1}(1)-Y_{i1}(0))D_i ) |D_i=1]\n\\end{split}\\]\nSimilarly,\n\\[\\begin{split}\n\\mathbb{E}[Y_{i2} -Y_{i1}|D_i=0 ] = \\mathbb{E}[Y_{i2}(0)|D_i=0] - \\mathbb{E}[Y_{i1}(0)|D_i=0]  \\\\+ \\mathbb{E}[(Y_{i2}(1)-Y_{i2}(0))D_i|D_i=0] \\\\ -\\mathbb{E}[((Y_{i1}(1)-Y_{i1}(0))D_i ) |D_i=0] \\\\  \n= \\mathbb{E}[Y_{i2}(0)|D_i=0] - \\mathbb{E}[Y_{i1}(0)|D_i=0]\n\\end{split}\\]\nThen,\n\\[\\begin{split} DiD = \\tau_2 \\\\\n+  \\mathbb{E}[Y_{i2}(0)|D_i=1] - \\mathbb{E}[Y_{i1}(0)|D_i=1] \\\\\n- (\\mathbb{E}[Y_{i2}(0)|D_i=0] - \\mathbb{E}[Y_{i1}(0)|D_i=0] ) \\\\\n-\\mathbb{E}[(Y_{i1}(1)-Y_{i1}(0)) |D_i=1] \\\\\n= \\tau_2 \\\\\n+  \\mathbb{E}[Y_{i2}(0) - Y_{i1}(0)|D_i=1] \\\\\n- (\\mathbb{E}[Y_{i2}(0) - Y_{i1}(0)|D_i=0] ) \\\\\n-\\mathbb{E}[(Y_{i1}(1)-Y_{i1}(0)) |D_i=1]\n\\end{split}\\]\nUnder Assumption 3.a and Assumption 4.a, DiD is equal to \\(\\tau_2\\).\n\n\n4.0.5.3 Estimation\nThe estimator is given by: \\[\\hat{DiD} = (\\bar{Y}_{1,2}-\\bar{Y}_{1,1}) - (\\bar{Y}_{0,2}-\\bar{Y}_{0,1})\\]\nwhere \\(\\bar{Y}_{j,s} = \\frac{1}{\\sum \\mathbb{1}_{D_i =j, t=s}} \\mathbb{1}_{D_i =j, t=s} Y_{it}\\) with \\(j \\in {0,1}\\) and \\(s \\in {1,2}\\).\n\n\n\n4.0.6 Relationship with ANOVA\nThe 2x2 DiD Design, can be seen as a two-factorial ANOVA design with two factors:\n\nTime period factor with two levels: period 0 and 1.\nTreatment factor with two levels: treated and untreated.\n\nAs a result it is a 2x2 ANOVA.\n\n\n\n\nCallaway, Brantly, and Pedro HC Sant’Anna. 2021. “Difference-in-Differences with Multiple Time Periods.” Journal of Econometrics 225 (2): 200–230.",
+    "crumbs": [
+      "Difference in Differences (DiD)",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Canonical DiD (2x2 DiD Design)</span>"
+    ]
+  }
+]

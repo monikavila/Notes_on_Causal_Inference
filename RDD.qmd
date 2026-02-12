@@ -1,0 +1,111 @@
+# Regression Discontinuity Design (RDD)
+
+## Setup
+
+The observed outcome variable is $Y_i$, the treatment variable $D_i$ is binary taking value 1 if treated and 0 otherwise. $Z_i$ is a running variable that is not affected by the treatment.  This variable is also called the forcing or treatment-determining variable (@imbens2008regression). The treatment assignment is determined completely or partly by being on either side of a treshold. The potential outcomes are $Y_i(1)$, and $Y_i(0)$. The observed outcome variable can be written as: 
+$$Y_i = Y_i(0) + (Y_i(1)-Y_i(0))D_i$$
+
+
+## Assumptions
+
+**Assumption 1.** Consistency assumption
+
+This assumption states that $Y_i = Y_i(D_i)$.
+
+**Assumption 2.** Discontinuous conditional treatment probability on the running variable $Z_i$ at the treshold $z_o$
+
+$\lim_{z \to z_o^+} \mathbb{E}[D_i | z_i = z] \neq \lim_{x \to x_o^-}  \mathbb{E}[D_i | z_i=z]$ and both limits exist
+
+@hahn2001identification provides this assumption. 
+
+This assumptions states that the conditional expectation of the treatment is discontinous in the running variable at the treshold $z_o$. 
+
+Thus, the probability of receiving treatment is discontinous at the treshold (@hahn2001identification). 
+
+**Assumption 3.a** Continous conditional expectation of the potential outcome without treatment on the running variable $Z_i$ at the treshold $z_o$
+
+$\mathbb{E} [Y_i(0)|Z_i = z]$ is continous in $z$ at $z_o$. 
+
+@hahn2001identification provides this assumption. 
+
+This assumptions states that the potential outcome without treatment can be related to the running variable, but it is continous at the treshold. As a result, any jump on the observed outcome at the treshold can be attributed to the treatment. 
+
+Under this assumption, persons close to the treshold are similar under the absence of treatment on average (@hahn2001identification). 
+
+**Assumption 3.b** Continous conditional expectation of the potential outcomes on the running variable $Z_i$ at all the support of $Z$
+
+$\mathbb{E} [Y_i(0)|Z_i = z]$ is continous in $z$. 
+
+$\mathbb{E} [Y_i(1)|Z_i = z]$ is continous in $z$. 
+
+@imbens2008regression provides this stronger assumption. This assumption is stronger than assumption 3.a as it requires continuity over the whole support of the running variable. @imbens2008regression states that it is unlikely to have continuity only at one point, and this is why consider that this assumption is more natural. 
+This assumption implies that a conditional idependence assumption holds trivially: 
+
+$$Y_i(0), Y_i(1) \perp D_i | Z_i $$
+
+The reason is that conditioning on the running variable, the treatment is fully determined. 
+
+**Assumption 3.c** Continous conditional distribution function of the potential outcomes on the running variable $Z_i$ at all the support of $Z$
+
+$\mathbb{F}_{Y(0)|Z}(y|z)$ is continous in $z$. 
+
+$\mathbb{F}_{Y(1)|Z}(y|z)$ is continous in $z$. 
+
+@imbens2008regression provides this stronger assumption than assumption 3.b.
+
+
+## Identification 
+
+### Constant treatment effects 
+**Assumption 4** Constant treatment effects 
+$$Y_i(1) - Y_i(0) = \beta$$
+
+#### Sharp design 
+In the sharp design, the treatment assignment is deterministic on $Z_i$ such that $D_i = \mathbb{1}_{Z_i\geq z_o}$. Then, $\lim_{z \to z_o^+} \mathbb{E}[D_i | z_i = z]=1$, and $\lim_{z \to z_o^-} \mathbb{E}[D_i | z_i = z]=0$. 
+Under assumptions 1 - 3, the identification formula: 
+
+$$\lim_{z \to z_o^+} \mathbb{E}[Y_i|Z_i =z ] - \lim_{z \to z_o^-} \mathbb{E}[Y_i|Z_i=z]$$ identifes the average cuasal effect at the treshold: 
+$$\mathbb{E}[Y_i(1)-Y_i(0)|Z_i =z_o].$$  
+
+*Proof (@hahn2001identification)* 
+
+By Assumption 1
+$\lim_{z \to z_o^-} \mathbb{E}[Y_i|Z_i=z] = \lim_{z \to z_o^-} \mathbb{E}[ Y_i(0)|Z_i=z] + \lim_{z \to z_o^-} \mathbb{E}[(Y_i(1)-Y_i(0))D_i|Z_i=z]$
+
+and 
+
+$\lim_{z \to z_o^+} \mathbb{E}[Y_i|Z_i=z] = \lim_{z \to z_o^+} \mathbb{E}[ Y_i(0)|Z_i=z] + \lim_{z \to z_o^+} \mathbb{E}[(Y_i(1)-Y_i(0))D_i|Z_i=z]$
+
+Then, 
+
+$\lim_{z \to z_o^+} \mathbb{E}[Y_i|Z_i=z] - \lim_{z \to z_o^-} \mathbb{E}[Y_i|Z_i=z]$ equals
+
+$$\begin{split}\lim_{z \to z_o^+} \mathbb{E}[(Y_i(1)-Y_i(0))D_i|Z_i=z] - \lim_{z \to z_o^+} \mathbb{E}[(Y_i(1)-Y_i(0))D_i|Z_i=z] \\ + \lim_{z \to z_o^+} \mathbb{E}[ Y_i(0)|Z_i=z] - \lim_{z \to z_o^+} \mathbb{E}[ Y_i(0)|Z_i=z]\end{split}$$
+
+By assumption 3.a, terms 3 and 4 vanishes. By assumption 4, 
+
+$$\begin{split}\lim_{z \to z_o^+} \mathbb{E}[(Y_i(1)-Y_i(0))D_i|Z_i=z] - \lim_{z \to z_o^+} \mathbb{E}[(Y_i(1)-Y_i(0))D_i|Z_i=z] = \\  \lim_{z \to z_o^+} \mathbb{E}[\beta D_i|Z_i=z] - \lim_{z \to z_o^+} \mathbb{E}[\beta D_i|Z_i=z] = \\ \beta ([\lim_{z \to z_o^+} \mathbb{E}[ D_i|Z_i=z] - \lim_{z \to z_o^+} \mathbb{E}[ D_i|Z_i=z])  \end{split}$$
+
+In the sharp design, $[\lim_{z \to z_o^+} \mathbb{E}[ D_i|Z_i=z] - \lim_{z \to z_o^+} \mathbb{E}[ D_i|Z_i=z] =1$.  
+
+Thus, the identification formula identifies the average causal effect $\beta$. 
+
+*Proof (@imbens2008regression)* 
+
+By the sharp design,
+$\lim_{z \to z_o^-} \mathbb{E}[Y_i|Z_i=z] = \lim_{z \to z_o^-} \mathbb{E}[Y_i(0)|D_i=0, Z_i=z]$
+
+Now, by conditional independence we have that:
+
+$\lim_{z \to z_o^-} \mathbb{E}[Y_i(0)|D_i=0, Z_i=z] = \lim_{z \to z_o^-} \mathbb{E}[Y_i(0)| Z_i=z]$
+
+Similar for the right-hand side limit. 
+
+##### Why conditional unconfoundedness is not enough for identification of the average treatment effect?
+
+@imbens2008regression explains that conditional unconfoundedness requires two assumptions: 
+
+1. Conditional independence: $Y_i(0), Y_i(1) \perp D_i | Z_i$ 
+2. Overlap: $0<P(Y_i(1)|Z_i)<1$
+
+The problem is that while conditional independence holds by assumption 3.b. The overlap assumption does not hold, the reason is that conditional on $Z_i$ probability of treatment is either 0 or 1. 
