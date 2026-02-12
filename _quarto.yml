@@ -11,11 +11,18 @@ book:
     
     - 1_Estimand.qmd
 
+    - Unconfoundedness.qmd
+    
+    - LATE.qmd 
+
     - RDD.qmd
 
     - part: DiD.qmd
       chapters:
       - CanonicalDiD.qmd
+
+    - SensitivityAnalysis.qmd
+
     - summary.qmd
     - references.qmd
 

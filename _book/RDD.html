@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Regression Discontinuity Design (RDD) – Causal Inference</title>
+<title>5&nbsp; Regression Discontinuity Design (RDD) – Causal Inference</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -51,7 +51,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./DiD.html" rel="next">
-<link href="./1_Estimand.html" rel="prev">
+<link href="./LATE.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -132,7 +132,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./RDD.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Regression Discontinuity Design (RDD)</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./RDD.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Regression Discontinuity Design (RDD)</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -179,8 +179,20 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Unconfoundedness.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Unconfoundedness</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./LATE.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Local Average Treatment Effect (LATE)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./RDD.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Regression Discontinuity Design (RDD)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Regression Discontinuity Design (RDD)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -195,15 +207,21 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./CanonicalDiD.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Canonical DiD (2x2 DiD Design)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Canonical DiD (2x2 DiD Design)</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./SensitivityAnalysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Sensitivity Analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -222,11 +240,11 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup"><span class="header-section-number">3.1</span> Setup</a></li>
-  <li><a href="#assumptions" id="toc-assumptions" class="nav-link" data-scroll-target="#assumptions"><span class="header-section-number">3.2</span> Assumptions</a></li>
-  <li><a href="#identification" id="toc-identification" class="nav-link" data-scroll-target="#identification"><span class="header-section-number">3.3</span> Identification</a>
+  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup"><span class="header-section-number">5.1</span> Setup</a></li>
+  <li><a href="#assumptions" id="toc-assumptions" class="nav-link" data-scroll-target="#assumptions"><span class="header-section-number">5.2</span> Assumptions</a></li>
+  <li><a href="#identification" id="toc-identification" class="nav-link" data-scroll-target="#identification"><span class="header-section-number">5.3</span> Identification</a>
   <ul class="collapse">
-  <li><a href="#constant-treatment-effects" id="toc-constant-treatment-effects" class="nav-link" data-scroll-target="#constant-treatment-effects"><span class="header-section-number">3.3.1</span> Constant treatment effects</a></li>
+  <li><a href="#constant-treatment-effects" id="toc-constant-treatment-effects" class="nav-link" data-scroll-target="#constant-treatment-effects"><span class="header-section-number">5.3.1</span> Constant treatment effects</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -236,7 +254,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Regression Discontinuity Design (RDD)</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Regression Discontinuity Design (RDD)</span></h1>
 </div>
 
 
@@ -253,12 +271,12 @@ window.Quarto = {
 </header>
 
 
-<section id="setup" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="setup"><span class="header-section-number">3.1</span> Setup</h2>
+<section id="setup" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="setup"><span class="header-section-number">5.1</span> Setup</h2>
 <p>The observed outcome variable is <span class="math inline">\(Y_i\)</span>, the treatment variable <span class="math inline">\(D_i\)</span> is binary taking value 1 if treated and 0 otherwise. <span class="math inline">\(Z_i\)</span> is a running variable that is not affected by the treatment. This variable is also called the forcing or treatment-determining variable (<span class="citation" data-cites="imbens2008regression">Imbens and Lemieux (<a href="references.html#ref-imbens2008regression" role="doc-biblioref">2008</a>)</span>). The treatment assignment is determined completely or partly by being on either side of a treshold. The potential outcomes are <span class="math inline">\(Y_i(1)\)</span>, and <span class="math inline">\(Y_i(0)\)</span>. The observed outcome variable can be written as: <span class="math display">\[Y_i = Y_i(0) + (Y_i(1)-Y_i(0))D_i\]</span></p>
 </section>
-<section id="assumptions" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="assumptions"><span class="header-section-number">3.2</span> Assumptions</h2>
+<section id="assumptions" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="assumptions"><span class="header-section-number">5.2</span> Assumptions</h2>
 <p><strong>Assumption 1.</strong> Consistency assumption</p>
 <p>This assumption states that <span class="math inline">\(Y_i = Y_i(D_i)\)</span>.</p>
 <p><strong>Assumption 2.</strong> Discontinuous conditional treatment probability on the running variable <span class="math inline">\(Z_i\)</span> at the treshold <span class="math inline">\(z_o\)</span></p>
@@ -282,13 +300,13 @@ window.Quarto = {
 <p><span class="math inline">\(\mathbb{F}_{Y(1)|Z}(y|z)\)</span> is continous in <span class="math inline">\(z\)</span>.</p>
 <p><span class="citation" data-cites="imbens2008regression">Imbens and Lemieux (<a href="references.html#ref-imbens2008regression" role="doc-biblioref">2008</a>)</span> provides this stronger assumption than assumption 3.b.</p>
 </section>
-<section id="identification" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="identification"><span class="header-section-number">3.3</span> Identification</h2>
-<section id="constant-treatment-effects" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="constant-treatment-effects"><span class="header-section-number">3.3.1</span> Constant treatment effects</h3>
+<section id="identification" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="identification"><span class="header-section-number">5.3</span> Identification</h2>
+<section id="constant-treatment-effects" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="constant-treatment-effects"><span class="header-section-number">5.3.1</span> Constant treatment effects</h3>
 <p><strong>Assumption 4</strong> Constant treatment effects <span class="math display">\[Y_i(1) - Y_i(0) = \beta\]</span></p>
-<section id="sharp-design" class="level4" data-number="3.3.1.1">
-<h4 data-number="3.3.1.1" class="anchored" data-anchor-id="sharp-design"><span class="header-section-number">3.3.1.1</span> Sharp design</h4>
+<section id="sharp-design" class="level4" data-number="5.3.1.1">
+<h4 data-number="5.3.1.1" class="anchored" data-anchor-id="sharp-design"><span class="header-section-number">5.3.1.1</span> Sharp design</h4>
 <p>In the sharp design, the treatment assignment is deterministic on <span class="math inline">\(Z_i\)</span> such that <span class="math inline">\(D_i = \mathbb{1}_{Z_i\geq z_o}\)</span>. Then, <span class="math inline">\(\lim_{z \to z_o^+} \mathbb{E}[D_i | z_i = z]=1\)</span>, and <span class="math inline">\(\lim_{z \to z_o^-} \mathbb{E}[D_i | z_i = z]=0\)</span>. Under assumptions 1 - 3, the identification formula:</p>
 <p><span class="math display">\[\lim_{z \to z_o^+} \mathbb{E}[Y_i|Z_i =z ] - \lim_{z \to z_o^-} \mathbb{E}[Y_i|Z_i=z]\]</span> identifes the average cuasal effect at the treshold: <span class="math display">\[\mathbb{E}[Y_i(1)-Y_i(0)|Z_i =z_o].\]</span></p>
 <p><em>Proof (<span class="citation" data-cites="hahn2001identification">Hahn, Todd, and Van der Klaauw (<a href="references.html#ref-hahn2001identification" role="doc-biblioref">2001</a>)</span>)</em></p>
@@ -307,8 +325,8 @@ window.Quarto = {
 <p>Now, by conditional independence we have that:</p>
 <p><span class="math inline">\(\lim_{z \to z_o^-} \mathbb{E}[Y_i(0)|D_i=0, Z_i=z] = \lim_{z \to z_o^-} \mathbb{E}[Y_i(0)| Z_i=z]\)</span></p>
 <p>Similar for the right-hand side limit.</p>
-<section id="why-conditional-unconfoundedness-is-not-enough-for-identification-of-the-average-treatment-effect" class="level5" data-number="3.3.1.1.1">
-<h5 data-number="3.3.1.1.1" class="anchored" data-anchor-id="why-conditional-unconfoundedness-is-not-enough-for-identification-of-the-average-treatment-effect"><span class="header-section-number">3.3.1.1.1</span> Why conditional unconfoundedness is not enough for identification of the average treatment effect?</h5>
+<section id="why-conditional-unconfoundedness-is-not-enough-for-identification-of-the-average-treatment-effect" class="level5" data-number="5.3.1.1.1">
+<h5 data-number="5.3.1.1.1" class="anchored" data-anchor-id="why-conditional-unconfoundedness-is-not-enough-for-identification-of-the-average-treatment-effect"><span class="header-section-number">5.3.1.1.1</span> Why conditional unconfoundedness is not enough for identification of the average treatment effect?</h5>
 <p><span class="citation" data-cites="imbens2008regression">Imbens and Lemieux (<a href="references.html#ref-imbens2008regression" role="doc-biblioref">2008</a>)</span> explains that conditional unconfoundedness requires two assumptions:</p>
 <ol type="1">
 <li>Conditional independence: <span class="math inline">\(Y_i(0), Y_i(1) \perp D_i | Z_i\)</span></li>
@@ -733,8 +751,8 @@ Imbens, Guido W, and Thomas Lemieux. 2008. <span>“Regression Discontinuity Des
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./1_Estimand.html" class="pagination-link" aria-label="Estimand, estimator and estimate">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Estimand, estimator and estimate</span></span>
+      <a href="./LATE.html" class="pagination-link" aria-label="Local Average Treatment Effect (LATE)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Local Average Treatment Effect (LATE)</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
